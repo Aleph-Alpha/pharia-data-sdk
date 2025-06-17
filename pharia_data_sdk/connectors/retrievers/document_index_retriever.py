@@ -2,7 +2,7 @@ import asyncio
 from collections.abc import Sequence
 from typing import Optional
 
-from intelligence_layer.connectors.document_index.document_index import (
+from pharia_data_sdk.connectors.document_index.document_index import (
     AsyncDocumentIndexClient,
     CollectionPath,
     DocumentIndexClient,
@@ -11,7 +11,7 @@ from intelligence_layer.connectors.document_index.document_index import (
     Filters,
     SearchQuery,
 )
-from intelligence_layer.connectors.retrievers.base_retriever import (
+from pharia_data_sdk.connectors.retrievers.base_retriever import (
     AsyncBaseRetriever,
     BaseRetriever,
     Document,
@@ -27,7 +27,7 @@ class DocumentIndexRetriever(BaseRetriever[DocumentPath]):
 
     Example:
     >>> import os
-    >>> from intelligence_layer.connectors import DocumentIndexClient, DocumentIndexRetriever
+    >>> from pharia_data_sdk.connectors import DocumentIndexClient, DocumentIndexRetriever
     >>> document_index = DocumentIndexClient(os.getenv("AA_TOKEN"))
     >>> retriever = DocumentIndexRetriever(document_index, "asymmetric", "aleph-alpha", "wikipedia-de", 3)
     >>> documents = retriever.get_relevant_documents_with_scores("Who invented the airplane?")

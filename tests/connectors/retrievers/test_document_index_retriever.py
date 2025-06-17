@@ -1,6 +1,6 @@
 import pytest
 
-from intelligence_layer.connectors.retrievers.document_index_retriever import (
+from pharia_data_sdk.connectors.retrievers.document_index_retriever import (
     AsyncDocumentIndexRetriever,
     DocumentIndexRetriever,
 )

@@ -11,7 +11,7 @@ from requests import HTTPError
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-from intelligence_layer.connectors.data.exceptions import (
+from pharia_data_sdk.connectors.data.exceptions import (
     DataError,
     DataExternalServiceUnavailable,
     DataForbiddenError,
@@ -19,7 +19,7 @@ from intelligence_layer.connectors.data.exceptions import (
     DataInvalidInput,
     DataResourceNotFound,
 )
-from intelligence_layer.connectors.data.models import (
+from pharia_data_sdk.connectors.data.models import (
     DataDataset,
     DataFile,
     DataFileCreate,

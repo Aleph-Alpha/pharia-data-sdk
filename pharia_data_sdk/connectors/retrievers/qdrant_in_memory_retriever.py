@@ -4,15 +4,15 @@ from enum import Enum
 from typing import Optional
 
 from aleph_alpha_client import Prompt, SemanticEmbeddingRequest, SemanticRepresentation
+from pharia_inference_sdk.connectors.limited_concurrency_client import (
+    AlephAlphaClientProtocol,
+    LimitedConcurrencyClient,
+)
 from qdrant_client import QdrantClient
 from qdrant_client.conversions.common_types import ScoredPoint
 from qdrant_client.http.models import Distance, PointStruct, VectorParams, models
 
-from intelligence_layer.connectors.limited_concurrency_client import (
-    AlephAlphaClientProtocol,
-    LimitedConcurrencyClient,
-)
-from intelligence_layer.connectors.retrievers.base_retriever import (
+from pharia_data_sdk.connectors.retrievers.base_retriever import (
     BaseRetriever,
     Document,
     DocumentChunk,
@@ -49,7 +49,7 @@ class QdrantInMemoryRetriever(BaseRetriever[int]):
         distance_metric: The distance metric to be used for vector comparison.
 
     Example:
-        >>> from intelligence_layer.connectors import LimitedConcurrencyClient, Document, QdrantInMemoryRetriever
+        >>> from pharia_data_sdk.connectors import LimitedConcurrencyClient, Document, QdrantInMemoryRetriever
         >>> client = LimitedConcurrencyClient.from_env()
         >>> documents = [Document(text=t) for t in ["I do not like rain.", "Summer is warm.", "We are so back."]]
         >>> retriever = QdrantInMemoryRetriever(documents, 5, client=client)

@@ -1,20 +1,20 @@
 from collections.abc import Sequence
 from concurrent.futures import ThreadPoolExecutor
 
+from pharia_inference_sdk.connectors.limited_concurrency_client import (
+    AlephAlphaClientProtocol,
+    LimitedConcurrencyClient,
+)
 from qdrant_client import QdrantClient
 from qdrant_client.http.models import Distance, PointStruct, VectorParams, models
 from qdrant_client.hybrid.fusion import reciprocal_rank_fusion
 
-from intelligence_layer.connectors.limited_concurrency_client import (
-    AlephAlphaClientProtocol,
-    LimitedConcurrencyClient,
-)
-from intelligence_layer.connectors.retrievers.base_retriever import (
+from pharia_data_sdk.connectors.retrievers.base_retriever import (
     Document,
     DocumentChunk,
     SearchResult,
 )
-from intelligence_layer.connectors.retrievers.qdrant_in_memory_retriever import (
+from pharia_data_sdk.connectors.retrievers.qdrant_in_memory_retriever import (
     QdrantInMemoryRetriever,
     RetrieverType,
 )
@@ -39,7 +39,7 @@ class HybridQdrantInMemoryRetriever(QdrantInMemoryRetriever):
         max_workers: The maximum number of workers to use for concurrent processing. Defaults to 10.
 
     Example:
-        >>> from intelligence_layer.connectors import LimitedConcurrencyClient, Document, HybridQdrantInMemoryRetriever
+        >>> from pharia_inference_sdk.connectors import LimitedConcurrencyClient, Document, HybridQdrantInMemoryRetriever
         >>> client = LimitedConcurrencyClient.from_env()
         >>> documents = [Document(text=t) for t in ["I do not like rain.", "Summer is warm.", "We are so back."]]
         >>> retriever = HybridQdrantInMemoryRetriever(documents, 5, client=client)
