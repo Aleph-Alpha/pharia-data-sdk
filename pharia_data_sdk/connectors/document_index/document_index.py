@@ -15,7 +15,7 @@ from pydantic.types import StringConstraints
 from requests import HTTPError
 from typing_extensions import Self
 
-from intelligence_layer.connectors.base.json_serializable import JsonSerializable
+from pharia_data_sdk.connectors.base.json_serializable import JsonSerializable
 
 Representation: TypeAlias = Literal["symmetric", "asymmetric"]
 HybridIndex: TypeAlias = Literal["bm25"] | None
@@ -960,7 +960,7 @@ class AsyncDocumentIndexClient:
     Example:
         >>> import os
         >>> import asyncio
-        >>> from intelligence_layer.connectors import (
+        >>> from pharia_data_sdk.connectors import (
         ...     CollectionPath,
         ...     DocumentContents,
         ...     AsyncDocumentIndexClient,

@@ -2,8 +2,8 @@ from collections.abc import Sequence
 
 from pytest import fixture
 
-from intelligence_layer.connectors.retrievers.base_retriever import Document
-from intelligence_layer.connectors.retrievers.qdrant_in_memory_retriever import (
+from pharia_data_sdk.connectors.retrievers.base_retriever import Document
+from pharia_data_sdk.connectors.retrievers.qdrant_in_memory_retriever import (
     QdrantInMemoryRetriever,
 )
 from tests.conftest_document_index import to_document

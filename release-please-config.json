@@ -1,0 +1,16 @@
+{
+  "bump-minor-pre-major": true,
+  "bump-patch-for-minor-pre-major": true,
+  "packages": {
+    ".": {
+      "extra-files": [
+        {
+          "jsonpath": "$.package[?(@.name.value=='pharia-data-sdk')].version",
+          "path": "uv.lock",
+          "type": "toml"
+        }
+      ],
+      "release-type": "python"
+    }
+  }
+}

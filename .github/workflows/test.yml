@@ -1,0 +1,56 @@
+name: Test & Lint
+
+on:
+  pull_request:
+    branches: [ "main" ]
+  push:
+    branches: [ "main" ]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@f0ec1fc3b38f5e7cd731bb6ce540c5af426746bb
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "pyproject.toml"
+      - name: Install dependencies
+        run: uv sync --dev
+      - name: Lint
+        run: uv run ruff check .
+      - name: Format
+        run: uv run ruff format --diff .
+      - name: Type check
+        run: uv run mypy --install-types --non-interactive .
+
+  test:
+    runs-on: ubuntu-latest
+    environment: test
+    services:
+      open-telemetry-trace-service:
+        image: jaegertracing/all-in-one:1.35
+        ports:
+            - "4317:4317"
+            - "4318:4318"
+            - "16686:16686"
+        env:
+          COLLECTOR_OTLP_ENABLED: "true"
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@f0ec1fc3b38f5e7cd731bb6ce540c5af426746bb
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: "pyproject.toml"
+      - name: Install dependencies
+        run: uv sync --dev
+      - name: Run tests
+        run: uv run pytest -n auto tests/
+        env:
+          AA_TOKEN: ${{ secrets.AA_TOKEN }}
+          CLIENT_URL: "https://inference-api.product.pharia.com"
+          DOCUMENT_INDEX_URL: "https://document-index.product.pharia.com"

@@ -5,7 +5,7 @@ import pytest
 from pydantic import ValidationError
 from pytest import raises
 
-from intelligence_layer.connectors.document_index.document_index import (
+from pharia_data_sdk.connectors.document_index.document_index import (
     CollectionPath,
     DocumentContents,
     DocumentFilterQueryParams,

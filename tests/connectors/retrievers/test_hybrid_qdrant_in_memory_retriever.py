@@ -1,11 +1,14 @@
 from collections.abc import Sequence
 
+from pharia_inference_sdk.connectors import AlephAlphaClientProtocol
 from pytest import fixture
 
-from intelligence_layer.connectors import AlephAlphaClientProtocol, RetrieverType
-from intelligence_layer.connectors.retrievers.base_retriever import Document
-from intelligence_layer.connectors.retrievers.hybrid_qdrant_in_memory_retriever import (
+from pharia_data_sdk.connectors.retrievers.base_retriever import Document
+from pharia_data_sdk.connectors.retrievers.hybrid_qdrant_in_memory_retriever import (
     HybridQdrantInMemoryRetriever,
+)
+from pharia_data_sdk.connectors.retrievers.qdrant_in_memory_retriever import (
+    RetrieverType,
 )
 from tests.conftest import to_document
 

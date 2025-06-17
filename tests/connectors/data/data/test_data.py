@@ -7,7 +7,7 @@ from requests import Session
 from requests.exceptions import RequestException
 from requests.models import Response
 
-from intelligence_layer.connectors.data import (
+from pharia_data_sdk.connectors.data import (
     DataClient,
     DataDataset,
     DataFile,

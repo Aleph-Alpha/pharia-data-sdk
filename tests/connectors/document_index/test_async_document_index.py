@@ -4,7 +4,7 @@ from http import HTTPStatus
 import pytest
 from pytest import raises
 
-from intelligence_layer.connectors.document_index.document_index import (
+from pharia_data_sdk.connectors.document_index.document_index import (
     AsyncDocumentIndexClient,
     CollectionPath,
     DocumentContents,

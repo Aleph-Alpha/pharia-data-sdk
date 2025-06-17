@@ -1,0 +1,112 @@
+[project]
+name = "pharia-data-sdk"
+version = "0.1.0"
+description = ""
+authors = [{ name = "Max Hammer", email = "max.hammer@aleph-alpha.com" }]
+requires-python = ">=3.12,<3.13"
+readme = "README.md"
+dependencies = [
+    "pydantic>=2.0.0",
+    "aleph-alpha-client>=10.2.2,<11.0.0",
+    "semantic-text-splitter>=0.5.0",
+    "pharia-inference-sdk>=0.1.2",
+    "qdrant-client[fastembed]>=1.14.3",
+]
+
+[project.urls]
+repository = "https://github.com/Aleph-Alpha/pharia-data-sdk.git"
+
+[dependency-groups]
+test = [
+    "pytest>=8.3",
+    "pytest-xdist>=3.6.1",
+    "pytest-asyncio>=0.26.0",
+]
+dev = [
+    "ruff>=0.11.13",
+    "mypy>=1.13.0,<2",
+    "pre-commit>=4.2.0",
+    "types-requests>=2.32.4.20250611",
+    "types-tqdm>=4.67.0.20250516",
+    "python-dotenv>=1.1.0",
+]
+
+[tool.uv]
+default-groups = ["test"]
+
+[tool.setuptools]
+packages = [
+    { include = "pharia_data_sdk" }
+]
+
+[tool.hatch.build.targets.sdist]
+include = ["pharia_data_sdk"]
+
+[tool.hatch.build.targets.wheel]
+include = ["pharia_data_sdk"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.pytest.ini_options]
+verbosity_assertions = 1
+markers = [
+    "internal: marks tests as internal (deselect with '-k \"not internal\"')",
+    "document_index: marks tests related to document indexing functionality.",
+]
+addopts = "--capture=tee-sys"
+asyncio_mode = "auto"
+
+[tool.ruff]
+target-version = "py310"
+extend-include = ["*.ipynb"]
+
+[tool.ruff.lint]
+# defaults: ["E4", "E7", "E9", "F"]
+# check https://docs.astral.sh/ruff/rules/ for more info
+select = [
+    "E4",
+    "E7",
+    "E9",
+    "F",
+    "W",
+    # isort
+    "I",
+    # simplify
+    "SIM",
+    # pathlib, small but may be nice
+    "PTH",
+    # update to newer python versions (mostly typing)
+    "UP",
+    # ruff dependent checks
+    "RUF",
+    # bugbear
+    "B",
+    # pydocstring
+    "D",
+
+
+]
+# Did not seem so useful: PD, T20(not yet), C90(eventually), PT (too opinionated)
+ignore = [
+    # Line too long
+    "E501",
+    # X | Y for hinting over optional
+    "UP007",
+    # next() instead of [0],
+    "RUF015",
+    # unusual unicodes
+    "RUF001",
+    # warnings should be self explanatory
+    "B028",
+    # we do not docstring everything
+    "D1",
+]
+extend-safe-fixes = ["D415"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["intelligence_layer", "documentation"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
