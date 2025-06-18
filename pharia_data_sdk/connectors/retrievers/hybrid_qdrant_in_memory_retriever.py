@@ -99,7 +99,7 @@ class HybridQdrantInMemoryRetriever(QdrantInMemoryRetriever):
             model_name=self._search_client.sparse_embedding_model_name
         )
 
-        sparse_vector = next(sparse_embedder.query_embed(query=query))
+        sparse_vector = next(iter(sparse_embedder.query_embed(query=query)))
         sparse_query_vector = models.SparseVector(
             indices=sparse_vector.indices.tolist(),
             values=sparse_vector.values.tolist(),
