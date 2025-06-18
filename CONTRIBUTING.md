@@ -29,9 +29,5 @@ cp .env.example .env
 ### Running Tests
 
 ```bash
-# make sure jaeger is running
-docker compose up -d
-
-# run tests
 uv run pytest
 ```
