@@ -3,13 +3,13 @@ name = "pharia-data-sdk"
 version = "0.1.1"
 description = ""
 authors = [{ name = "Max Hammer", email = "max.hammer@aleph-alpha.com" }]
-requires-python = ">=3.12,<3.13"
+requires-python = ">=3.10,<3.13"
 readme = "README.md"
 dependencies = [
     "pydantic>=2.0.0",
     "aleph-alpha-client>=10.2.2,<11.0.0",
     "semantic-text-splitter>=0.5.0",
-    "pharia-inference-sdk>=0.1.2",
+    "pharia-inference-sdk>=0.1.5",
     "qdrant-client[fastembed]>=1.14.3",
 ]
 
