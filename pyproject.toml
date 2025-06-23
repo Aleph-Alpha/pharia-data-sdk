@@ -41,6 +41,13 @@ dev = [
     "types-simplejson>=3.20.0.20250326",
     "types-tensorflow>=2.18.0.20250516",
 ]
+docs = [
+    "sphinx>=7.0.0,<8.0.0",
+    "sphinx-rtd-theme>=3.0.2",
+    "myst-parser>=3.0.0,<4.0.0",
+    "sphinx-design>=0.6.1",
+    "sphinx-copybutton>=0.5.2",
+]
 
 [tool.uv]
 default-groups = ["test"]
