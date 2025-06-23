@@ -2,7 +2,7 @@
 name = "pharia-data-sdk"
 version = "0.1.2"
 description = ""
-authors = [{ name = "Max Hammer", email = "max.hammer@aleph-alpha.com" }]
+authors = [{ name = "Aleph Alpha Engineering", email = "engineering@aleph-alpha.com" }]
 requires-python = ">=3.10,<3.13"
 readme = "README.md"
 dependencies = [
