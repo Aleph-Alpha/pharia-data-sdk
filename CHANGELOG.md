@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/Aleph-Alpha/pharia-data-sdk/compare/v0.1.2...v0.1.3) (2025-06-24)
+
+
+### Documentation
+
+* generate read the docs ([#12](https://github.com/Aleph-Alpha/pharia-data-sdk/issues/12)) ([793ef63](https://github.com/Aleph-Alpha/pharia-data-sdk/commit/793ef63f0a08611750d76fcfb4b912b2b743bcb7))
+
 ## [0.1.2](https://github.com/Aleph-Alpha/pharia-data-sdk/compare/v0.1.1...v0.1.2) (2025-06-19)
 
 
