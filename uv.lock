@@ -132,7 +132,7 @@ wheels = [
 
 [[package]]
 name = "aleph-alpha-client"
-version = "10.4.0"
+version = "10.5.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "aiodns" },
@@ -147,9 +147,9 @@ dependencies = [
     { name = "typing-extensions" },
     { name = "urllib3" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/1b/ff/8e347ff61a2495f92e4d8afaf5d839c63e106755f431540fd742925d0fa9/aleph_alpha_client-10.4.0.tar.gz", hash = "sha256:0ccbdb994dcb37b2f31a56c1c1f811f067c9f4187e143d98c1373f7437b1e862", size = 48123, upload-time = "2025-06-18T11:47:20.548Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/a6/87/078c3052bcb6469205a8d5bf00f83bd4ca22ccd0f0d54709b8f411c288fc/aleph_alpha_client-10.5.1.tar.gz", hash = "sha256:bc900daa1f9547ca8025614bcc510cda9303d870e29f75ffcc6884464d67a17c", size = 48682, upload-time = "2025-07-16T15:15:39.689Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/4a/ce/c643079f715d05b53ac53ae6071b1be647f6fe8165ebde17c80704512043/aleph_alpha_client-10.4.0-py3-none-any.whl", hash = "sha256:7ab1364a6d78ed11aee344ad75b95f968d2c82ae2b1414c222bbe684cce64a88", size = 41398, upload-time = "2025-06-18T11:47:19.428Z" },
+    { url = "https://files.pythonhosted.org/packages/c0/02/16e7fd70b7f3ba1fbda4ed51ee01f7a3fdd27e182c515aa46c09249dd506/aleph_alpha_client-10.5.1-py3-none-any.whl", hash = "sha256:2151807e810c678da919ff47da3c70922c2f080c1d3986192b72781e02e237e3", size = 41514, upload-time = "2025-07-16T15:15:38.601Z" },
 ]
 
 [[package]]
