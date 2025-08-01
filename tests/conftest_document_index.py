@@ -46,15 +46,13 @@ R = TypeVar("R")
 
 @fixture(scope="session")
 def document_index(token: str) -> DocumentIndexClient:
-    return DocumentIndexClient(
-        token, base_document_index_url=os.environ["DOCUMENT_INDEX_URL"]
-    )
+    return DocumentIndexClient(token, base_url=os.environ["DOCUMENT_INDEX_URL"])
 
 
 @pytest_asyncio.fixture()
 async def async_document_index(token: str) -> AsyncIterator[AsyncDocumentIndexClient]:
     async with AsyncDocumentIndexClient(
-        token, base_document_index_url=os.environ["DOCUMENT_INDEX_URL"]
+        token, base_url=os.environ["DOCUMENT_INDEX_URL"]
     ) as client:
         yield client
 
