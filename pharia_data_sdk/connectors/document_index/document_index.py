@@ -476,14 +476,14 @@ class DocumentIndexClient:
 
     def __init__(
         self,
-        token: str | None,
+        token: str,
         base_url: str,
     ) -> None:
         self._base_url = f"{base_url.rstrip('/')}/"
         self.headers = {
             "Content-Type": "application/json",
             "Accept": "application/json",
-            **({"Authorization": f"Bearer {token}"} if token is not None else {}),
+            "Authorization": f"Bearer {token}",
         }
 
     def __url(self, relative_path: str) -> str:
@@ -990,7 +990,7 @@ class AsyncDocumentIndexClient:
 
     def __init__(
         self,
-        token: str | None,
+        token: str,
         base_url: str,
     ) -> None:
         """Initializes an async client for the document index.
@@ -1003,7 +1003,7 @@ class AsyncDocumentIndexClient:
         self.headers = {
             "Content-Type": "application/json",
             "Accept": "application/json",
-            **({"Authorization": f"Bearer {token}"} if token is not None else {}),
+            "Authorization": f"Bearer {token}",
         }
         self._session: Optional[ClientSession] = None
 
