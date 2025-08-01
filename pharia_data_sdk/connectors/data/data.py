@@ -47,7 +47,7 @@ class DataClient:
 
     def __init__(
         self,
-        token: str | None,
+        token: str,
         base_url: str,
         session: requests.Session | None = None,
     ) -> None:
@@ -59,9 +59,7 @@ class DataClient:
             session: a already created requests session. Defaults to None.
         """
         self._base_url = f"{base_url.rstrip('/')}/"
-        self.headers = {
-            **({"Authorization": f"Bearer {token}"} if token is not None else {}),
-        }
+        self.headers = {"Authorization": f"Bearer {token}"}
 
         self._session = session or requests.Session()
         retry_strategy = Retry(
