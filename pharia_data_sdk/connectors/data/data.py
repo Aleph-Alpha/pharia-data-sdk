@@ -48,14 +48,14 @@ class DataClient:
     def __init__(
         self,
         token: str | None,
-        base_url: str = "http://localhost:8000",
+        base_url: str,
         session: requests.Session | None = None,
     ) -> None:
         """Initialize the Data Client.
 
         Args:
             token: Access token
-            base_url: Base URL of the Studio Data API. Defaults to "http://localhost:8000".
+            base_url: Base URL of the Studio Data API.
             session: a already created requests session. Defaults to None.
         """
         self._base_url = f"{base_url.rstrip('/')}/"
