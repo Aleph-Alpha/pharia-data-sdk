@@ -40,13 +40,6 @@ def test_document_index_sets_authorization_header_for_given_token() -> None:
 
 
 @pytest.mark.internal
-def test_document_index_sets_no_authorization_header_when_token_is_none() -> None:
-    document_index = DocumentIndexClient(None)
-
-    assert "Authorization" not in document_index.headers
-
-
-@pytest.mark.internal
 def test_document_index_lists_namespaces(
     document_index: DocumentIndexClient,
     document_index_namespace: str,

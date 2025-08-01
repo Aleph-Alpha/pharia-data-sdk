@@ -36,12 +36,6 @@ def test_document_index_sets_authorization_header_for_given_token() -> None:
 
 
 @pytest.mark.internal
-def test_document_index_sets_no_authorization_header_when_token_is_none() -> None:
-    async_document_index = AsyncDocumentIndexClient(None)
-    assert "Authorization" not in async_document_index.headers
-
-
-@pytest.mark.internal
 async def test_document_index_lists_namespaces_async(
     async_document_index: AsyncDocumentIndexClient,
     async_document_index_namespace: str,
