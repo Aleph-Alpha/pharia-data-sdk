@@ -477,7 +477,7 @@ class DocumentIndexClient:
     def __init__(
         self,
         token: str | None,
-        base_url: str = "https://document-index.aleph-alpha.com",
+        base_url: str,
     ) -> None:
         self._base_url = f"{base_url.rstrip('/')}/"
         self.headers = {
@@ -991,7 +991,7 @@ class AsyncDocumentIndexClient:
     def __init__(
         self,
         token: str | None,
-        base_url: str = "https://document-index.aleph-alpha.com",
+        base_url: str,
     ) -> None:
         """Initializes an async client for the document index.
 
