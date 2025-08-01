@@ -29,7 +29,9 @@ def mock_session() -> Mock:
 
 @pytest.fixture
 def data_client(mock_session: Mock) -> DataClient:
-    return DataClient(token="some-token", session=mock_session)
+    return DataClient(
+        token="some-token", base_url="http://localhost:8000", session=mock_session
+    )
 
 
 def test_list_repositories(data_client: DataClient, mock_session: Mock) -> None:
