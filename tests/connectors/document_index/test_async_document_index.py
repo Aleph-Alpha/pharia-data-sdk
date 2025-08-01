@@ -29,9 +29,11 @@ pytestmark = pytest.mark.document_index
 
 
 @pytest.mark.internal
-def test_document_index_sets_authorization_header_for_given_token() -> None:
+def test_document_index_sets_authorization_header_for_given_token(
+    base_url: str,
+) -> None:
     token = "some-token"
-    async_document_index = AsyncDocumentIndexClient(token)
+    async_document_index = AsyncDocumentIndexClient(token, base_url)
     assert async_document_index.headers["Authorization"] == f"Bearer {token}"
 
 
