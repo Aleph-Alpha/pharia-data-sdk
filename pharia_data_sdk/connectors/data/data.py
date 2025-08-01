@@ -48,17 +48,17 @@ class DataClient:
     def __init__(
         self,
         token: str | None,
-        base_data_platform_url: str = "http://localhost:8000",
+        base_url: str = "http://localhost:8000",
         session: requests.Session | None = None,
     ) -> None:
         """Initialize the Data Client.
 
         Args:
             token: Access token
-            base_data_platform_url: Base URL of the Studio Data API. Defaults to "http://localhost:8000".
+            base_url: Base URL of the Studio Data API. Defaults to "http://localhost:8000".
             session: a already created requests session. Defaults to None.
         """
-        self._base_data_platform_url = base_data_platform_url
+        self._base_url = f"{base_url.rstrip('/')}/"
         self.headers = {
             **({"Authorization": f"Bearer {token}"} if token is not None else {}),
         }
@@ -83,6 +83,9 @@ class DataClient:
 
         warnings.warn("DataClient still in beta version and subject to change")
 
+    def __url(self, relative_path: str) -> str:
+        return urljoin(self._base_url, relative_path)
+
     def list_repositories(self, page: int = 0, size: int = 20) -> list[DataRepository]:
         """List all the repositories.
 
@@ -93,7 +96,7 @@ class DataClient:
         Returns:
             List of :class:`DataRepository` objects
         """
-        url = urljoin(self._base_data_platform_url, "api/v1/repositories")
+        url = self.__url("api/v1/repositories")
         query = urlencode({"page": page, "size": size})
         response = self._do_request("GET", f"{url}?{query}")
         repositories = response.json()
@@ -110,7 +113,7 @@ class DataClient:
         Returns:
             :class:`DataRepository` new object
         """
-        url = urljoin(self._base_data_platform_url, "api/v1/repositories")
+        url = self.__url("api/v1/repositories")
         response = self._do_request(
             "POST", url, json=repository.model_dump(by_alias=True)
         )
@@ -125,9 +128,7 @@ class DataClient:
         Returns:
             :class:`DataRepository` object
         """
-        url = urljoin(
-            self._base_data_platform_url, f"api/v1/repositories/{repository_id}"
-        )
+        url = self.__url(f"api/v1/repositories/{repository_id}")
         response = self._do_request("GET", url)
         return DataRepository(**response.json())
 
@@ -141,8 +142,7 @@ class DataClient:
         Returns:
             :class:`DataDataset` new object
         """
-        url = urljoin(
-            self._base_data_platform_url,
+        url = self.__url(
             f"api/v1/repositories/{repository_id}/datasets",
         )
         body = {
@@ -172,8 +172,7 @@ class DataClient:
         Returns:
             List of :class:`DataDataset` from a given repository
         """
-        url = urljoin(
-            self._base_data_platform_url,
+        url = self.__url(
             f"api/v1/repositories/{repository_id}/datasets",
         )
         query = urlencode({"page": page, "size": size})
@@ -191,8 +190,7 @@ class DataClient:
         Returns:
             :class:`DataDataset` object
         """
-        url = urljoin(
-            self._base_data_platform_url,
+        url = self.__url(
             f"api/v1/repositories/{repository_id}/datasets/{dataset_id}",
         )
         response = self._do_request("GET", url)
@@ -205,8 +203,7 @@ class DataClient:
             repository_id: Repository ID
             dataset_id: DataDataset ID
         """
-        url = urljoin(
-            self._base_data_platform_url,
+        url = self.__url(
             f"api/v1/repositories/{repository_id}/datasets/{dataset_id}",
         )
         self._do_request("DELETE", url)
@@ -221,8 +218,7 @@ class DataClient:
         Returns:
             :class Iterator of datapoints(Any)
         """
-        url = urljoin(
-            self._base_data_platform_url,
+        url = self.__url(
             f"api/v1/repositories/{repository_id}/datasets/{dataset_id}/datapoints",
         )
         response = self._do_request("GET", url, stream=True)
@@ -237,7 +233,7 @@ class DataClient:
         Returns:
             :class:`DataStage` new object
         """
-        url = urljoin(self._base_data_platform_url, "api/v1/stages")
+        url = self.__url("api/v1/stages")
         response = self._do_request("POST", url, json=stage.model_dump(by_alias=True))
         return DataStage(**response.json())
 
@@ -251,7 +247,7 @@ class DataClient:
         Returns:
             List of :class:`DataStage` objects
         """
-        url = urljoin(self._base_data_platform_url, "api/v1/stages")
+        url = self.__url("api/v1/stages")
         query = urlencode({"page": page, "size": size})
         response = self._do_request("GET", f"{url}?{query}")
         stages = response.json()
@@ -266,7 +262,7 @@ class DataClient:
         Returns:
             :class:`DataStage` object
         """
-        url = urljoin(self._base_data_platform_url, f"api/v1/stages/{stage_id}")
+        url = self.__url(f"api/v1/stages/{stage_id}")
         response = self._do_request("GET", url)
         return DataStage(**response.json())
 
@@ -280,8 +276,7 @@ class DataClient:
         Returns:
             :class:`DataFile` new object
         """
-        url = urljoin(
-            self._base_data_platform_url,
+        url = self.__url(
             f"api/v1/stages/{stage_id}/files",
         )
 
@@ -310,8 +305,7 @@ class DataClient:
         Returns:
             List of :class:`DataFile` objects
         """
-        url = urljoin(
-            self._base_data_platform_url,
+        url = self.__url(
             f"api/v1/stages/{stage_id}/files",
         )
         query = urlencode({"page": page, "size": size})
@@ -329,9 +323,7 @@ class DataClient:
         Returns:
             File bytes
         """
-        url = urljoin(
-            self._base_data_platform_url, f"api/v1/stages/{stage_id}/files/{file_id}"
-        )
+        url = self.__url(f"api/v1/stages/{stage_id}/files/{file_id}")
         response = self._do_request("GET", url)
         return io.BytesIO(response.content)
 

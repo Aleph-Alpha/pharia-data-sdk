@@ -31,11 +31,11 @@ pytestmark = pytest.mark.document_index
 
 
 @pytest.mark.internal
-def test_document_index_sets_authorization_header_for_given_token() -> None:
+def test_document_index_sets_authorization_header_for_given_token(
+    document_index_base_url: str,
+) -> None:
     token = "some-token"
-
-    document_index = DocumentIndexClient(token)
-
+    document_index = DocumentIndexClient(token, document_index_base_url)
     assert document_index.headers["Authorization"] == f"Bearer {token}"
 
 
