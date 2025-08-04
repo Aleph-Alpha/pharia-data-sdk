@@ -4,7 +4,7 @@ Formerly the `intelligence_layer/connectors/data`, `intelligence_layer/connector
 
 ## Overview
 
-This module provides connectors for interacting with the Pharia Data Platform and Document Index, you can use it to semantically search, access and manage data, documents. 
+This module provides connectors for interacting with the Pharia Data Platform and Pharia Search (a.k.a. Document Index), you can use it to semantically search, access and manage data, documents. 
 
 ## Installation
 
@@ -23,7 +23,7 @@ client = DataClient(token="<token>", base_data_platform_url="<base_data_platform
 
 repositories = client.list_repositories()
 repository = repositories[0]
-datasets = client.list_datasets(repository)
+datasets = client.list_datasets(repository.repository_id)
 dataset = datasets[0]
 ```
 
@@ -46,9 +46,9 @@ from pharia_data_sdk.connectors.document_index.document_index import DocumentInd
 
 retriever = DocumentIndexRetriever(
     document_index=DocumentIndexClient(token="<token>", base_document_index_url="<base_document_index_url>"),
-    index_name="<index_name>",
-    namespace="<namespace>",
-    collection="<collection>",
+    index_name="<index_name, e.g. asym-64>",
+    namespace="<namespace, e.g. Studio>",
+    collection="<collection, e.g. papers>",
 )
 
 retriever.get_relevant_documents_with_scores("What fish is most common in swedish lakes?")
