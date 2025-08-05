@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.1.4](https://github.com/Aleph-Alpha/pharia-data-sdk/compare/v0.1.3...v0.1.4) (2025-08-05)
+
+
+### Features
+
+* api token is required ([57d620d](https://github.com/Aleph-Alpha/pharia-data-sdk/commit/57d620dc696a80ddfb645fc2c681a102ed042099))
+* remove default base url ([960535f](https://github.com/Aleph-Alpha/pharia-data-sdk/commit/960535f7a55357c7299f3c01a4b294194d8dba27))
+* rename base url parameter ([a8f0276](https://github.com/Aleph-Alpha/pharia-data-sdk/commit/a8f027665e7578fa1d27465e9536e44d8e39320b))
+
 ## [0.1.3](https://github.com/Aleph-Alpha/pharia-data-sdk/compare/v0.1.2...v0.1.3) (2025-06-24)
 
 
