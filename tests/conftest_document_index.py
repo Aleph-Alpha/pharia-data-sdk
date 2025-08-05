@@ -45,17 +45,25 @@ R = TypeVar("R")
 
 
 @fixture(scope="session")
-def document_index(token: str) -> DocumentIndexClient:
-    return DocumentIndexClient(
-        token, base_document_index_url=os.environ["DOCUMENT_INDEX_URL"]
-    )
+def document_index_base_url() -> str:
+    try:
+        return os.environ["DOCUMENT_INDEX_URL"]
+    except KeyError:
+        raise Exception(
+            "Environment variable 'DOCUMENT_INDEX_URL' is not set."
+        ) from None
+
+
+@fixture(scope="session")
+def document_index(token: str, document_index_base_url: str) -> DocumentIndexClient:
+    return DocumentIndexClient(token, document_index_base_url)
 
 
 @pytest_asyncio.fixture()
-async def async_document_index(token: str) -> AsyncIterator[AsyncDocumentIndexClient]:
-    async with AsyncDocumentIndexClient(
-        token, base_document_index_url=os.environ["DOCUMENT_INDEX_URL"]
-    ) as client:
+async def async_document_index(
+    token: str, document_index_base_url: str
+) -> AsyncIterator[AsyncDocumentIndexClient]:
+    async with AsyncDocumentIndexClient(token, document_index_base_url) as client:
         yield client
 
 
