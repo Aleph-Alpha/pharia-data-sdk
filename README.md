@@ -10,8 +10,8 @@
 
 ---
 
-[![CI](https://github.com/Aleph-Alpha/pharia_data_sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/Aleph-Alpha/pharia_data_sdk/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/Aleph-Alpha/pharia_data_sdk/actions/workflows/codeql.yml/badge.svg)](https://github.com/Aleph-Alpha/pharia_data_sdk/actions/workflows/codeql.yml)
+[![CI](https://github.com/Aleph-Alpha/pharia-data-sdk/actions/workflows/ci.yml/badge.svg)](https://github.com/Aleph-Alpha/pharia-data-sdk/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/Aleph-Alpha/pharia-data-sdk/actions/workflows/codeql.yml/badge.svg)](https://github.com/Aleph-Alpha/pharia-data-sdk/actions/workflows/codeql.yml)
 [![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
 [![Async](https://img.shields.io/badge/async-native-green.svg)](https://docs.python.org/3/library/asyncio.html)
 [![Type Safe](https://img.shields.io/badge/typing-full-brightgreen.svg)](https://docs.python.org/3/library/typing.html)
@@ -34,13 +34,13 @@
 
 ```bash
 # Install directly from GitHub using uv (recommended)
-uv pip install git+https://github.com/Aleph-Alpha/pharia_data_sdk.git
+uv pip install git+https://github.com/Aleph-Alpha/pharia-data-sdk.git
 
 # Or add to your project dependencies
-uv add git+https://github.com/Aleph-Alpha/pharia_data_sdk.git
+uv add git+https://github.com/Aleph-Alpha/pharia-data-sdk.git
 
 # For development (clone and install)
-git clone https://github.com/Aleph-Alpha/pharia_data_sdk.git
+git clone https://github.com/Aleph-Alpha/pharia-data-sdk.git
 cd pharia_data_sdk
 uv sync
 ```

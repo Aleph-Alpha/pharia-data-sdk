@@ -11,7 +11,7 @@
 ## Step 1: Install
 
 ```bash
-uv add git+https://github.com/Aleph-Alpha/pharia_data_sdk.git
+uv add git+https://github.com/Aleph-Alpha/pharia-data-sdk.git
 ```
 
 ## Step 2: Configure
