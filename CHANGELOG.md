@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.5](https://github.com/Aleph-Alpha/pharia-data-sdk/compare/v0.1.4...v0.1.5) (2025-12-02)
+
+
+### Bug Fixes
+
+* pin qdrant-client version to &lt;1.16.0 ([#70](https://github.com/Aleph-Alpha/pharia-data-sdk/issues/70)) ([6882dca](https://github.com/Aleph-Alpha/pharia-data-sdk/commit/6882dca7544dbc7d377aea3dfd06acfb676c391c))
+
 ## [0.1.4](https://github.com/Aleph-Alpha/pharia-data-sdk/compare/v0.1.3...v0.1.4) (2025-08-05)
 
 

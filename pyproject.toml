@@ -1,6 +1,6 @@
 [project]
 name = "pharia-data-sdk"
-version = "0.1.4"
+version = "0.1.5"
 description = ""
 authors = [{ name = "Aleph Alpha Engineering", email = "engineering@aleph-alpha.com" }]
 requires-python = ">=3.10,<3.13"
