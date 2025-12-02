@@ -10,7 +10,7 @@ dependencies = [
     "aleph-alpha-client>=10.2.2,<11.0.0",
     "semantic-text-splitter>=0.5.0",
     "pharia-inference-sdk>=0.1.5",
-    "qdrant-client[fastembed]>=1.14.3",
+    "qdrant-client[fastembed]>=1.14.3,<1.16.0",
 ]
 
 [project.urls]
