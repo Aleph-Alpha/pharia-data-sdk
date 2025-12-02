@@ -92,9 +92,9 @@ class QdrantInMemoryRetriever(BaseRetriever[int]):
         self, query: str
     ) -> Sequence[SearchResult[int]]:
         query_embedding = self._embed(query, self._query_representation)
-        search_result = self._search_client.search(
+        search_result = self._search_client.query_points(
             collection_name=self._collection_name,
-            query_vector=query_embedding,
+            query=query_embedding,
             score_threshold=self._threshold,
             limit=self._k,
         )
@@ -161,9 +161,9 @@ class QdrantInMemoryRetriever(BaseRetriever[int]):
             All documents that correspond to the query and pass the filter.
         """
         query_embedding = self._embed(query, self._query_representation)
-        search_result = self._search_client.search(
+        search_result = self._search_client.query_points(
             collection_name=self._collection_name,
-            query_vector=query_embedding,
+            query=query_embedding,
             limit=self._k,
             query_filter=filter,
         )

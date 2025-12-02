@@ -147,7 +147,7 @@ class HybridQdrantInMemoryRetriever(QdrantInMemoryRetriever):
         )
 
         dense_request_response, sparse_request_response = (
-            self._search_client.search_batch(
+            self._search_client.query_batch_points(
                 collection_name=self._collection_name,
                 requests=[dense_request, sparse_request],
             )
