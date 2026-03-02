@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.6](https://github.com/Aleph-Alpha/pharia-data-sdk/compare/v0.1.5...v0.1.6) (2026-03-02)
+
+
+### Bug Fixes
+
+* override pillow to &gt;=12.1.1 to address CVE-2026-25990 ([#72](https://github.com/Aleph-Alpha/pharia-data-sdk/issues/72)) ([679b7df](https://github.com/Aleph-Alpha/pharia-data-sdk/commit/679b7dfa8017fb5953a991a1fb6787f1e304e1b3))
+
 ## [0.1.5](https://github.com/Aleph-Alpha/pharia-data-sdk/compare/v0.1.4...v0.1.5) (2025-12-02)
 
 
